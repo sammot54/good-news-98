@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good News 98 - Positive News in Retro Style</title>
+    <link rel="stylesheet" href="styles/win98.css">
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+</head>
+<body>
+    <!-- Windows 98 Desktop -->
+    <div class="desktop">
+        <!-- Main Window -->
+        <div class="window main-window" id="mainWindow">
+            <!-- Title Bar -->
+            <div class="title-bar">
+                <div class="title-bar-text">Good News 98 - Bringing You Positive Headlines</div>
+                <div class="title-bar-controls">
+                    <button class="minimize-btn" title="Minimize">_</button>
+                    <button class="maximize-btn" title="Maximize">□</button>
+                    <button class="close-btn" title="Close">×</button>
+                </div>
+            </div>
+            
+            <!-- Menu Bar -->
+            <div class="menu-bar">
+                <button class="menu-item active" onclick="showNews()">News</button>
+                <button class="menu-item" onclick="showSearch()">Search</button>
+                <button class="menu-item" onclick="showBookmarks()">Bookmarks</button>
+                <button class="menu-item" onclick="showAbout()">About</button>
+                <button class="menu-item" onclick="showContact()">Contact</button>
+            </div>
+            
+            <!-- Status Bar -->
+            <div class="status-bar">
+                <div class="status-item">
+                    <span id="newsCount">Loading news...</span>
+                </div>
+                <div class="status-item">
+                    <span id="lastUpdated">Never</span>
+                </div>
+                <div class="status-item">
+                    <button onclick="refreshNews()" class="refresh-btn">Refresh</button>
+                </div>
+            </div>
+            
+            <!-- Main Content Area -->
+            <div class="content-area">
+                <!-- News Section -->
+                <div id="newsSection" class="section active">
+                    <div class="news-header">
+                        <h2>Today's Good News</h2>
+                        <div class="news-filters">
+                            <label>
+                                <input type="checkbox" checked id="filterScience"> Science & Tech
+                            </label>
+                            <label>
+                                <input type="checkbox" checked id="filterCommunity"> Community
+                            </label>
+                            <label>
+                                <input type="checkbox" checked id="filterEnvironment"> Environment
+                            </label>
+                            <label>
+                                <input type="checkbox" checked id="filterHealth"> Health
+                            </label>
+                            <label>
+                                <input type="checkbox" checked id="filterSports"> Sports
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div id="newsContainer" class="news-container">
+                        <div class="loading-message">
+                            <div class="loading-spinner"></div>
+                            <p>Loading positive news stories...</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Search Section -->
+                <div id="searchSection" class="section">
+                    <div class="search-header">
+                        <h2>Search Good News</h2>
+                        <div class="search-form">
+                            <input type="text" id="searchInput" placeholder="Enter keywords...">
+                            <button onclick="performSearch()">Search</button>
+                        </div>
+                    </div>
+                    <div id="searchResults" class="news-container">
+                        <p class="help-text">Enter keywords to search for positive news stories.</p>
+                    </div>
+                </div>
+                
+                <!-- Bookmarks Section -->
+                <div id="bookmarksSection" class="section">
+                    <div class="bookmarks-header">
+                        <h2>Bookmarked Articles</h2>
+                        <button onclick="clearBookmarks()" class="clear-btn">Clear All</button>
+                    </div>
+                    <div id="bookmarksContainer" class="news-container">
+                        <p class="help-text">Your bookmarked articles will appear here.</p>
+                    </div>
+                </div>
+                
+                <!-- About Section -->
+                <div id="aboutSection" class="section">
+                    <div class="about-content">
+                        <h2>About Good News 98</h2>
+                        <div class="dialog-box">
+                            <p>Welcome to Good News 98, where we bring you only the most positive and uplifting news stories in an authentic Windows 98 interface!</p>
+                            
+                            <h3>Our Mission</h3>
+                            <p>In a world full of negative headlines, we believe there's always good news happening. Our platform filters through thousands of news stories to bring you only the positive, inspiring, and uplifting content.</p>
+                            
+                            <h3>What We Cover</h3>
+                            <ul>
+                                <li>Scientific breakthroughs and discoveries</li>
+                                <li>Acts of kindness and community support</li>
+                                <li>Environmental progress and conservation</li>
+                                <li>Technology innovations helping people</li>
+                                <li>Arts, culture, and creative achievements</li>
+                                <li>Sports accomplishments and inspiring stories</li>
+                                <li>Health and wellness breakthroughs</li>
+                                <li>Educational advancements</li>
+                            </ul>
+                            
+                            <h3>Why Windows 98?</h3>
+                            <p>We chose the nostalgic Windows 98 interface because it represents a simpler, more optimistic time in technology. The retro aesthetic serves as a reminder that progress and positivity go hand in hand.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Section -->
+                <div id="contactSection" class="section">
+                    <div class="contact-content">
+                        <h2>Contact Us</h2>
+                        <div class="dialog-box">
+                            <p>Have a positive news story to share? Feedback about our site? We'd love to hear from you!</p>
+                            
+                            <form class="contact-form" onsubmit="submitContact(event)">
+                                <div class="form-group">
+                                    <label for="contactName">Name:</label>
+                                    <input type="text" id="contactName" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="contactEmail">Email:</label>
+                                    <input type="email" id="contactEmail" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="contactSubject">Subject:</label>
+                                    <select id="contactSubject">
+                                        <option>General Feedback</option>
+                                        <option>Submit Good News Story</option>
+                                        <option>Technical Issue</option>
+                                        <option>Feature Request</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="contactMessage">Message:</label>
+                                    <textarea id="contactMessage" rows="5" required></textarea>
+                                </div>
+                                
+                                <div class="form-buttons">
+                                    <button type="submit">Send Message</button>
+                                    <button type="reset">Clear Form</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Taskbar -->
+        <div class="taskbar">
+            <div class="start-button" onclick="toggleStartMenu()">
+                <span class="start-logo">🪟</span>
+                <span>Start</span>
+            </div>
+            <div class="taskbar-items">
+                <div class="taskbar-item active">Good News 98</div>
+            </div>
+            <div class="taskbar-time" id="currentTime">12:00 PM</div>
+        </div>
+        
+        <!-- Start Menu -->
+        <div id="startMenu" class="start-menu hidden">
+            <div class="start-menu-header">
+                <span>Good News 98</span>
+            </div>
+            <div class="start-menu-items">
+                <div class="start-menu-item" onclick="showNews(); toggleStartMenu();">
+                    <span class="menu-icon">📰</span>
+                    <span>News Feed</span>
+                </div>
+                <div class="start-menu-item" onclick="showSearch(); toggleStartMenu();">
+                    <span class="menu-icon">🔍</span>
+                    <span>Search</span>
+                </div>
+                <div class="start-menu-item" onclick="showBookmarks(); toggleStartMenu();">
+                    <span class="menu-icon">⭐</span>
+                    <span>Bookmarks</span>
+                </div>
+                <div class="start-menu-divider"></div>
+                <div class="start-menu-item" onclick="refreshNews(); toggleStartMenu();">
+                    <span class="menu-icon">🔄</span>
+                    <span>Refresh News</span>
+                </div>
+                <div class="start-menu-item" onclick="showAbout(); toggleStartMenu();">
+                    <span class="menu-icon">ℹ️</span>
+                    <span>About</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="scripts/main.js"></script>
+    <script src="scripts/news-api.js"></script>
+    <script src="scripts/sentiment.js"></script>
+</body>
+</html>
