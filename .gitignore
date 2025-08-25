@@ -1,0 +1,34 @@
+# Development files
+*.log
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+/tmp/
+*.backup
+*.bak
+
+# Cache directories
+.cache/
+node_modules/
+.npm/
+.yarn/
+
+# OS generated files
+.DS_Store?
+ehthumbs.db
+Icon?
+
+# Optional: API keys (if you add real news API integration)
+config.js
+.env
+*.key
